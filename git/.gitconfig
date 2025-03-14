@@ -1,0 +1,26 @@
+[alias]
+  a = add
+  aa = add --all
+  b  = branch
+  c  = commit
+  ca = commit --amend
+  can = commit --amend --no-edit
+  co = checkout
+  f  = fetch
+	lo = log --oneline
+  lg = log --oneline --graph
+	ls = log --oneline --stat
+  r  = reset
+  s  = stash
+  sls = stash list
+  sp  = stash pop
+  t = tag
+  preclean = clean -ndxf
+[user]
+  name = thorn
+  email = vestigialthorn@gmail.com
+[credential]
+	username = vestigial-thorn
+	helper = cache
+[init]
+	defaultBranch = main

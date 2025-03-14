@@ -1,0 +1,9 @@
+# No arguments: `git status`
+# With arguments: acts like `git`
+t() {
+  if [[ $# > 0 ]]; then
+    yarn nx test $@ --coverage --watch --verbose
+  else
+    yarn nx affected:test --coverage
+  fi
+}

@@ -1,0 +1,25 @@
+alias ...='../..'
+alias brr='~/Source/second-brain/bin/cli.js'
+alias c='code-insiders'
+alias code='code-insiders'
+alias d='dirs -v | head -10'
+alias e='$EDITOR'
+alias edit='$EDITOR'
+alias f='cd ~-1'
+alias la='ls -a'
+alias lh='ls -Alh'
+alias ll='ls -al'
+alias ln='ls -v'
+alias mkdir='mkdir -p'
+alias resource='source ~/.zshrc && echo "zsh resourced"';
+alias tlf='tail -f'
+alias v='$VISUAL'
+
+# create functions
+alias y='yarn'
+alias yy='yarn start'
+
+alias nx='yarn nx'
+alias l='yarn nx affected:lint --fix'
+alias b='yarn nx affected:build'
+alias s='yarn nx serve'
