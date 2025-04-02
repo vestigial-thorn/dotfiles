@@ -27,6 +27,9 @@ return {
       hl["CursorLine"] = { bg = darkGray }
       hl["CursorLineNr"] = { fg = darkOrange }
       hl["Whitespace"] = { fg = normalFg, bg = "#752424" }
+      hl["NormalFloat"] = { bg = normalBg, fg = normalFg }
+      hl["FloatBorder"] = { bg = normalBg, fg = slate }
+      hl["FloatTitle"] = { bg = normalBg, fg = slate }
       hl["@attrbute"] = { fg = purple }
       hl["@constant"] = { fg = chalk }
       hl["@keyword"] = { fg = orange }
@@ -55,17 +58,18 @@ return {
       -- Telescope
       hl["TelescopeNormal"] = { bg = normalBg, fg = normalFg }
       hl["TelescopeBorder"] = { bg = normalBg, fg = slate }
-      -- hl["TelescopeSelectionCaret"] = { bg = normalBg }
-      hl["TelescopeMatching"] = { bg = normalBg }
-      hl["TelescopeNormal"] = { bg = normalBg, fg = slate }
-      -- hl["TelescopePromptNormal"] = { bg = normalBg }
-      -- hl["TelescopePromptTitle"] = { bg = normalBg }
-      -- hl["TelescopePromptPrefix"] = { bg = normalBg }
+      hl["TelescopeSelection"] = { bg = "#7f4c00", fg = normalFg }
+      hl["TelescopeSelectionCaret"] = { bg = normalBg, fg = orange }
+      hl["TelescopePromptNormal"] = { fg = orange }
+      hl["TelescopePromptTitle"] = { fg = orange }
+      hl["TelescopePromptPrefix"] = { fg = orange }
       hl["TelescopePromptBorder"] = { fg = orange, bg = normalBg }
       -- hl["TelescopePreviewTitle"] = { bg = normalBg }
       -- hl["TelescopePreviewBorder"] = { bg = normalBg }
       -- hl["TelescopeResultsTitle"] = { bg = normalBg }
       -- hl["TelescopeResultsBorder"] = { bg = normalBg, fg = normalFg }
+
+      hl["WhichKeyNormal"] = { bg = normalBg, fg = normalFg }
 
       if vim.fn.has("nvim-0.10") == 1 then
         hl.LineNrAbove = { fg = gray }
