@@ -37,3 +37,5 @@ vim.opt.updatetime = 300 -- faster completion (4000ms default)
 vim.opt.wrap = false -- display lines as one long line
 vim.opt.wrap = true
 vim.opt.writebackup = false -- prevents editing files being edited in anoter app
+
+vim.g.lazyvim_picker = "telescope"
