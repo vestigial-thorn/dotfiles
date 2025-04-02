@@ -2,7 +2,7 @@ local normalFg = "#A9B7C6"
 local normalBg = "#323131"
 local algae = "#698E53"
 local chalk = "#B0BDCB"
-local darkOrange = "#C8601B"
+local tomato = "#ff6347"
 local orange = "#D08B1B"
 local purple = "#B683C8"
 local slate = "#7A9EC2"
@@ -25,7 +25,7 @@ return {
       hl["Normal"] = { fg = normalFg, bg = normalBg, bold = false }
       hl["ColorColumn"] = { bg = darkGray }
       hl["CursorLine"] = { bg = darkGray }
-      hl["CursorLineNr"] = { fg = darkOrange }
+      hl["CursorLineNr"] = { fg = tomato }
       hl["Whitespace"] = { fg = normalFg, bg = "#752424" }
       hl["NormalFloat"] = { bg = normalBg, fg = normalFg }
       hl["FloatBorder"] = { bg = normalBg, fg = slate }
@@ -33,9 +33,9 @@ return {
       hl["@attrbute"] = { fg = purple }
       hl["@constant"] = { fg = chalk }
       hl["@keyword"] = { fg = orange }
-      hl["@keyword.async"] = { fg = darkOrange }
+      hl["@keyword.async"] = { fg = tomato }
       hl["@keyword.import"] = { fg = orange }
-      hl["@keyword.return"] = { fg = darkOrange }
+      hl["@keyword.return"] = { fg = tomato }
       hl["@number"] = { fg = slate }
       hl["@operator"] = { fg = chalk }
       hl["@parameter"] = { fg = normalFg }
@@ -73,7 +73,6 @@ return {
 
       if vim.fn.has("nvim-0.10") == 1 then
         hl.LineNrAbove = { fg = gray }
-
         hl.LineNrBelow = { fg = gray }
       end
     end,
