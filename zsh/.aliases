@@ -1,6 +1,7 @@
 alias ...='../..'
 alias brr='~/Source/second-brain/bin/cli.js'
 alias c='code-insiders'
+alias cat="echo \"use bat\""
 alias code='code-insiders'
 alias d='dirs -v | head -10'
 alias e='$EDITOR'
@@ -11,7 +12,7 @@ alias lh='ls -Alh'
 alias ll='ls -al'
 alias ln='ls -v'
 alias mkdir='mkdir -p'
-alias resource='source ~/.zshrc && echo "zsh resourced"';
+alias resource='source ~/.zshrc && echo "zsh synced"';
 alias tlf='tail -f'
 alias v='$VISUAL'
 
@@ -20,6 +21,6 @@ alias y='yarn'
 alias yy='yarn start'
 
 alias nx='yarn nx'
-alias l='yarn nx affected:lint --fix'
-alias b='yarn nx affected:build'
-alias s='yarn nx serve'
+alias l='npx nx affected:lint --fix'
+alias b='npx nx affected:build'
+alias s='npx nx serve'

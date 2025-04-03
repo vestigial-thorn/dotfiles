@@ -3,6 +3,8 @@ return {
   lazy = false, -- dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
   opts = function()
     local logo = [[
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀ᚦ°⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⢀⣠⡴⠾⠛⠋⠉⠉⠉⠉⠙⠛⠷⢦⣄⡀⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⣠⣴⠟⢁⣠⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣦⣄⠀⠀⠀⠀⠀
@@ -17,7 +19,7 @@ return {
   ⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⢀⣴⣶⠄⠠⣶⣦⡀⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⡏⠈⢿⣿⠀⠀⣿⡿⠁⢹⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀
   ⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⠀⠀⠉⠀⠀⠉⠀⠀⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀
-  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀  ⠀⠀⠀⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ]]
 
     logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -33,15 +35,15 @@ return {
         header = vim.split(logo, "\n"),
         -- stylua: ignore
         center = {
-          { action = 'lua LazyVim.pick()()',                           desc = " Find File",       icon = " ", key = "f" },
-          { action = "ene | startinsert",                              desc = " New File",        icon = " ", key = "n" },
-          { action = 'lua LazyVim.pick("oldfiles")()',                 desc = " Recent Files",    icon = " ", key = "r" },
-          { action = 'lua LazyVim.pick("live_grep")()',                desc = " Find Text",       icon = " ", key = "g" },
-          { action = 'lua LazyVim.pick.config_files()()',              desc = " Config",          icon = " ", key = "c" },
-          { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
-          -- { action = "LazyExtras",                                     desc = " Lazy Extras",     icon = " ", key = "x" },
-          -- { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
-          { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
+          { desc = " Find File",        action = 'lua LazyVim.pick()()',                            icon = " ", key = "f" },
+          { desc = " New File",         action = "ene | startinsert",                               icon = " ", key = "n" },
+          { desc = " Recent Files",     action = 'lua LazyVim.pick("oldfiles")()',                  icon = " ", key = "r" },
+          { desc = " Find Text",        action = 'lua LazyVim.pick("live_grep")()',                 icon = " ", key = "g" },
+          { desc = " Config",           action = 'lua LazyVim.pick.config_files()()',               icon = " ", key = "c" },
+          { desc = " Restore Session",  action = 'lua require("persistence").load()',               icon = " ", key = "s" },
+          { desc = " Quit",             action = function() vim.api.nvim_input("<cmd>qa<cr>") end,  icon = " ", key = "q" },
+          -- { desc = " Lazy Extras",   action = "LazyExtras",                                      icon = " ", key = "x" },
+          -- { desc = " Lazy",          action = "Lazy",                                            icon = "󰒲 ", key = "l" },
         },
         footer = function()
           local stats = require("lazy").stats()
