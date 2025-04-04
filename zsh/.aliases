@@ -20,7 +20,7 @@ alias v='$VISUAL'
 alias y='yarn'
 alias yy='yarn start'
 
-alias nx='yarn nx'
+alias nx='npx nx'
 alias l='npx nx affected:lint --fix'
 alias b='npx nx affected:build'
 alias s='npx nx serve'
