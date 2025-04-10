@@ -1,5 +1,8 @@
 return {
   "zbirenbaum/copilot.lua",
+  dependencies = {
+    "CopilotC-Nvim/CopilotChat.nvim", -- Add CopilotChat plugin
+  },
   opts = {
     suggestion = {
       enabled = not vim.g.ai_cmp,
@@ -11,10 +14,14 @@ return {
         prev = "<M-[>",
       },
     },
-    panel = { enabled = false },
+    panel = { enabled = true },
     filetypes = {
       markdown = true,
       help = true,
     },
   },
+  config = function(_, opts)
+    require("copilot").setup(opts)
+    require("CopilotChat").setup() -- Ensure CopilotChat is set up
+  end,
 }
