@@ -1,4 +1,5 @@
 -- Default Lazyvim keymaps: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+local wk = require("which-key")
 local defaultOpts = { noremap = true, silent = true }
 
 local function keymap(mode, keys, action, opts)
@@ -43,8 +44,18 @@ mapLeader("gg", cmd("vert Gitsigns diffthis HEAD"), "Diff this")
 mapLeader("gs", cmd("Gitsigns stage_hunk"), "Stage hunk")
 mapLeader("gr", cmd("Gitsigns reset_hunk"), "Reset hunk")
 
+-- timers
+wk.add({ "<leader>t", group = "timer" })
+mapLeader("tt", cmd("TimerHide"), "toggle show")
+mapLeader("th", cmd("TimerHide"), "Hide")
+mapLeader("tk", cmd("TimerStop"), "Stop")
+mapLeader("tp", cmd("TimerPause"), "Pause")
+mapLeader("tr", cmd("TimerResume"), "Resume")
+mapLeader("ts", cmd("TimerSession pomodoro"), "Pomodoro")
+mapLeader("tT", cmd("TimerStart 15m DoTheThing"), "Go! (15m)")
+
 -- ui
-Snacks.toggle.zen():map("z")
+Snacks.toggle.zen():map("<leader>z")
 
 --windows
 unmapLeader("wd")
