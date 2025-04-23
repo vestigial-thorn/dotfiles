@@ -3,9 +3,7 @@ return {
   version = "*",
   lazy = true,
   cmd = { "TimerStart", "TimerHide", "TimerRepeat", "TimerSession" },
-  dependencies = {
-    "rcarriga/nvim-notify",
-  },
+  dependencies = { "rcarriga/nvim-notify" },
   opts = {
     sessions = {
       -- Example session configuration for a session called "pomodoro".

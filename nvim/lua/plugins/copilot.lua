@@ -22,6 +22,10 @@ return {
   },
   config = function(_, opts)
     require("copilot").setup(opts)
-    require("CopilotChat").setup() -- Ensure CopilotChat is set up
+    require("CopilotChat").setup({
+      mappings = {
+        reset = false,
+      },
+    })
   end,
 }

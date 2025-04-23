@@ -2,6 +2,10 @@
 local wk = require("which-key")
 local defaultOpts = { noremap = true, silent = true }
 
+local function addGroup(keys, groupTitle)
+  wk.add({ ("<leader>" .. keys), group = groupTitle })
+end
+
 local function keymap(mode, keys, action, opts)
   return vim.api.nvim_set_keymap(mode, keys, action, opts or defaultOpts)
 end
@@ -22,9 +26,15 @@ local function cmd(command)
   return (":" .. command .. "<CR>")
 end
 
-mapLeader("v", "<C-j>", ":m .+1<CR>==gv") -- move selection up; keep selected
-mapLeader("v", "<C-k>", ":m .-2<CR>==gv") -- move selection down; keep selected
 keymap("n", "<leader>.", "@:", { desc = "Repeat command" })
+
+mapLeader("sx", cmd("nohlsearch"), "Remove search highlighting")
+
+-- # normal mode
+-- ai
+addGroup("a", "ai")
+mapLeader("aa", cmd("CopilotChatToggle"), "Toggle")
+mapLeader("ap", cmd("CopiotChatPrompts"), "Prompts")
 
 -- buffers
 unmapLeader("bd")
@@ -37,15 +47,31 @@ keymap("n", "<C-.>", cmd("lua vim.lsp.buf.code_action()"), { desc = "Code action
 
 -- files
 mapLeader("fw", cmd("write"), "Save file")
+mapLeader("fv", cmd("vert new"), "New file")
 mapLeader("F", cmd("Telescope find_files"), "Find files")
 
 -- git
 mapLeader("gg", cmd("vert Gitsigns diffthis HEAD"), "Diff this")
 mapLeader("gs", cmd("Gitsigns stage_hunk"), "Stage hunk")
+mapLeader("gS", cmd("Gitsigns stage_buffer"), "Stage buffer")
 mapLeader("gr", cmd("Gitsigns reset_hunk"), "Reset hunk")
+mapLeader("gR", cmd("Gitsigns reset_buffer"), "Reset buffer")
+
+--notes
+unmapLeader("n")
+addGroup("n", "notes")
+mapLeader("nn", cmd("ObsidianDailies"), "Daily")
+mapLeader("nN", cmd("ObsidianNew"), "New Note")
+mapLeader("nb", cmd("ObsidianBacklinks"), "Backlinks")
+mapLeader("nc", cmd("ObsidianToggleCheckbox"), "Toggle checkbox")
+mapLeader("nr", cmd("ObsidianRename"), "Rename")
+mapLeader("nt", cmd("ObsidianTomorrow"), "Tomorrow's note")
+mapLeader("nw", cmd("ObsidianWorkspace"), "Workspace")
+mapLeader("no", cmd("ObsidianQuickSwitch"), "Quickswitch")
+mapLeader("ny", cmd("ObsidianYesterday"), "Yesterday's note")
 
 -- timers
-wk.add({ "<leader>t", group = "timer" })
+addGroup("t", "timer")
 mapLeader("tt", cmd("TimerHide"), "toggle show")
 mapLeader("th", cmd("TimerHide"), "Hide")
 mapLeader("tk", cmd("TimerStop"), "Stop")
@@ -56,7 +82,16 @@ mapLeader("tT", cmd("TimerStart 15m DoTheThing"), "Go! (15m)")
 
 -- ui
 Snacks.toggle.zen():map("<leader>z")
+Snacks.toggle.zoom():map("<leader>Z")
 
 --windows
 unmapLeader("wd")
 mapLeader("wk", cmd("q"), "Kill window")
+keymap("n", "<C-w><C-h>", cmd("vert res -5"))
+keymap("n", "<C-w><C-j>", cmd("res -5"))
+keymap("n", "<C-w><C-k>", cmd("res +5"))
+keymap("n", "<C-w><C-l>", cmd("vert res +5"))
+
+-- # visual mode
+keymap("v", "<C-j>", ":m .+1<CR>==gv")
+keymap("v", "<C-k>", ":m .-2<CR>==gv")
