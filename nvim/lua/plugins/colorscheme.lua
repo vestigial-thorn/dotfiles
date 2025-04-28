@@ -1,5 +1,6 @@
 local normalFg = "#A9B7C6"
-local normalBg = "#323131"
+local normalBg = "#424040"
+-- local normalBg = "#323131"
 local algae = "#698E53"
 local chalk = "#B0BDCB"
 local tomato = "#ff6347"
@@ -8,7 +9,8 @@ local darkOrange = "#C8601B"
 local purple = "#B683C8"
 local slate = "#7A9EC2"
 local gray = "#737AA2"
-local darkGray = "#383838"
+local darkGray = "#484848"
+local pollen = "#d9bc8d"
 
 return {
   "folke/tokyonight.nvim",
@@ -19,14 +21,16 @@ return {
     styles = {
       comments = { italic = false, fg = "#7ac292" },
       keywords = { italic = false },
-      functions = { italic = true, fg = "#d9bc8d" },
+      functions = { italic = true, fg = pollen },
       variables = { italic = true },
     },
-    on_highlights = function(hl, colors)
+
+    on_highlights = function(hl)
       hl["Normal"] = { fg = normalFg, bg = normalBg, bold = false }
       hl["ColorColumn"] = { bg = darkGray }
       hl["CursorLine"] = { bg = darkGray }
       hl["CursorLineNr"] = { fg = tomato }
+      hl["DiagnosticError"] = { fg = pollen }
       hl["DiagnosticUnnecessary"] = { fg = gray }
       hl["FloatBorder"] = { bg = normalBg, fg = slate }
       hl["FloatTitle"] = { bg = normalBg, fg = slate }
@@ -66,7 +70,7 @@ return {
       hl["@number"] = { fg = slate }
       hl["@parameter"] = { fg = normalFg }
       hl["@property"] = { fg = purple }
-      hl["@punctuation.bracket"] = { fg = "#eae167" }
+      hl["@punctuation.bracket"] = { fg = pollen }
       hl["@string"] = { fg = algae }
       hl["@type"] = { fg = slate }
       hl["@type.definition"] = { fg = slate }

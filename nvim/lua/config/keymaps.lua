@@ -27,6 +27,7 @@ local function cmd(command)
 end
 
 keymap("n", "<leader>.", "@:", { desc = "Repeat command" })
+keymap("n", "g<C-d>", ":vsplit<CR>gd", { desc = "Goto definition in new split", silent = true })
 
 mapLeader("sx", cmd("nohlsearch"), "Remove search highlighting")
 
