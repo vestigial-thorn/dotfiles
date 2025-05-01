@@ -1,48 +1,70 @@
+# colors
+autoload -U colors
+colors
+export CLICOLOR=1
+
+
+# completions
+if type brew &>/dev/null; then
+  local brew_prefix
+  brew_prefix=$(brew --prefix)
+  if [[ -d "$brew_prefix/share/zsh-completions" ]]; then
+    FPATH="$brew_prefix/share/zsh-completions:$FPATH"
+  fi
+fi
+
+compinit
+
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # colored listings
+zstyle ':completion:*' group-name '' # Group matches by category
+zstyle ':completion:*' menu select # menu-style selections
+# attempt sorting
+zstyle ':completion:*' tag-order 'branches' 'remotes' 'local-directories' 'files'
+
+# git prompt
+
 git_prompt_info() {
-  current_branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-  if [[ -n $current_branch ]]; then
-    echo " %{$fg_bold[green]%}$current_branch%{$reset_color%}"
+  local branch
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+  if [[ -n $branch ]]; then
+    echo " %{$fg_bold[green]%}$branch%{$reset_color%}"
   fi
 }
 
 setopt promptsubst
 
+# PS1
 # Allow exported PS1 variable to override default prompt.
 if ! env | grep -q '^PS1='; then
   PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info)
 ⇢ '
 fi
 
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
 
-autoload -U colors
-colors
+# functions
+[[ -d ~/.zsh/functions ]] && for function in ~/.zsh/functions/*(.N); do
+  source "$function"
+done
 
-export CLICOLOR=1
+# settings
 
+setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars # popd
+setopt extendedglob # Enable extended globbing
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory
 HISTSIZE=4096
 SAVEHIST=4096
-
-setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars # popd
 DIRSTACKSIZE=5
 
-# Enable extended globbing
-setopt extendedglob
-
+set -o ignoreeof    # prevent ctrl-d closing terminal until > 5x
 unset nomatch
 
-[[ -f ~/.aliases ]] && source ~/.aliases
-autoload -U compinit
-compinit
+# default to increase node memory recourses to 4GB
+export NODE_OPTIONS=--max_old_space_size=4096
 
-for function in ~/.zsh/functions/*; do
-  source $function
-done
-
+# key bindings
 
 # vi mode
 bindkey -v
@@ -54,37 +76,17 @@ bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 bindkey '^R' history-incremental-search-backward
 bindkey '^P' history-search-backward
-bindkey '^Y' accept-and-holde
+bindkey '^Y' accept-and-hold
 bindkey '^N' insert-last-word
-
-# prevent ctrl-d closing terminal until > 5x
-set -o ignoreeof
 
 # nvm setup
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion<Paste>
-
-# default to increase node memory recourses to 4GB
-export NODE_OPTIONS=--max_old_space_size=4096
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/brandonseda/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/brandonseda/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/brandonseda/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/brandonseda/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/brandonseda/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/brandonseda/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh
-
-# bit
-case ":$PATH:" in
-  *":/Users/brandonseda/bin:"*) ;;
-  *) export PATH="$PATH:/Users/brandonseda/bin" ;;
-esac
-# bit end
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 [ -f "/Users/brandonseda/.ghcup/env" ] && . "/Users/brandonseda/.ghcup/env" # ghcup-env
+
+# perl setup
 PATH="/Users/brandonseda/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/brandonseda/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/brandonseda/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
