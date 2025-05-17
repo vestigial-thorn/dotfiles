@@ -13,6 +13,7 @@ if type brew &>/dev/null; then
   fi
 fi
 
+autoload -Uz compinit
 compinit
 
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # colored listings
