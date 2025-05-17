@@ -7,6 +7,7 @@
   can = commit --amend --no-edit
   co = checkout
   f  = fetch
+  ld = 'log --pretty=format:"%h %ad | %s (%an)" --date=short'
 	lo = log --oneline
   lg = log --oneline --graph
 	ls = log --oneline --stat
