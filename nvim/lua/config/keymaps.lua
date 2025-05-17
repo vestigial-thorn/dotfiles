@@ -55,10 +55,10 @@ mapLeader("F", cmd("Telescope find_files"), "Find files")
 mapLeader("gg", cmd("vert Gitsigns diffthis HEAD"), "Diff this")
 mapLeader("gs", cmd("Gitsigns stage_hunk"), "Stage hunk")
 mapLeader("gS", cmd("Gitsigns stage_buffer"), "Stage buffer")
-mapLeader("gr", cmd("Gitsigns reset_hunk"), "Reset hunk")
-mapLeader("gR", cmd("Gitsigns reset_buffer"), "Reset buffer")
+mapLeader("gu", cmd("Gitsigns unstage_hunk"), "Unstage hunk")
+mapLeader("gU", cmd("Gitsigns unstage_buffer"), "Unstage buffer")
 
---notes
+-- notes
 unmapLeader("n")
 addGroup("n", "notes")
 mapLeader("nn", cmd("ObsidianDailies"), "Daily")
@@ -70,6 +70,12 @@ mapLeader("nt", cmd("ObsidianTomorrow"), "Tomorrow's note")
 mapLeader("nw", cmd("ObsidianWorkspace"), "Workspace")
 mapLeader("no", cmd("ObsidianQuickSwitch"), "Quickswitch")
 mapLeader("ny", cmd("ObsidianYesterday"), "Yesterday's note")
+
+-- tabs
+mapLeader("<TAB>h", cmd("tabfirst"), "First tab")
+mapLeader("<TAB>j", cmd("tabprevious"), "Previous tab")
+mapLeader("<TAB>k", cmd("tabnext"), "Next tab")
+mapLeader("<TAB>l", cmd("tablast"), "Last tab")
 
 -- timers
 addGroup("t", "timer")
@@ -88,6 +94,8 @@ Snacks.toggle.zoom():map("<leader>Z")
 --windows
 unmapLeader("wd")
 mapLeader("wk", cmd("q"), "Kill window")
+mapLeader("wV", cmd("vert new"), "New window (vertical)")
+mapLeader("wS", cmd("new"), "New window (horizontal)")
 keymap("n", "<C-w><C-h>", cmd("vert res -5"))
 keymap("n", "<C-w><C-j>", cmd("res -5"))
 keymap("n", "<C-w><C-k>", cmd("res +5"))
