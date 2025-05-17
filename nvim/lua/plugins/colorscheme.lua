@@ -1,16 +1,19 @@
 local normalFg = "#A9B7C6"
-local normalBg = "#424040"
--- local normalBg = "#323131"
-local algae = "#698E53"
+local normalBg = "#383a3a"
+
+local algae = "#7ac292"
+local amythist = "#9E69AF"
+local basil = "#0b8043"
 local chalk = "#B0BDCB"
-local tomato = "#ff6347"
-local orange = "#D08B1B"
-local darkOrange = "#C8601B"
-local purple = "#B683C8"
-local slate = "#7A9EC2"
-local gray = "#737AA2"
 local darkGray = "#484848"
+local darkOrange = "#C8601B"
+local flamingo = "#e67c73"
+local gray = "#737AA2"
+local orange = "#D08B1B"
 local pollen = "#d9bc8d"
+local slate = "#7A9EC2"
+local tomato = "#ff6347"
+local wisteria = "#b39ddb"
 
 return {
   "folke/tokyonight.nvim",
@@ -19,7 +22,7 @@ return {
     transparent = true, -- Enable/Disable background transparency
     terminal_colors = true,
     styles = {
-      comments = { italic = false, fg = "#7ac292" },
+      comments = { italic = false, fg = basil },
       keywords = { italic = false },
       functions = { italic = true, fg = pollen },
       variables = { italic = true },
@@ -29,13 +32,13 @@ return {
       hl["Normal"] = { fg = normalFg, bg = normalBg, bold = false }
       hl["ColorColumn"] = { bg = darkGray }
       hl["CursorLine"] = { bg = darkGray }
-      hl["CursorLineNr"] = { fg = tomato }
-      hl["DiagnosticError"] = { fg = pollen }
+      hl["CursorLineNr"] = { fg = flamingo }
+      hl["DiagnosticError"] = { fg = flamingo }
       hl["DiagnosticUnnecessary"] = { fg = gray }
       hl["FloatBorder"] = { bg = normalBg, fg = slate }
       hl["FloatTitle"] = { bg = normalBg, fg = slate }
       hl["NormalFloat"] = { bg = normalBg, fg = normalFg }
-      hl["Statement"] = { fg = purple }
+      hl["Statement"] = { fg = wisteria }
       hl["Whitespace"] = { fg = normalFg, bg = "#752424" }
       hl["FlashBackdrop"] = { fg = gray }
       hl["NeoTreeNormal"] = { bg = normalBg }
@@ -61,7 +64,7 @@ return {
       -- Syntax
       ---------------
 
-      hl["@attrbute"] = { fg = purple }
+      hl["@attrbute"] = { fg = wisteria }
       hl["@constant"] = { fg = chalk }
       hl["@keyword"] = { fg = orange }
       hl["@keyword.async"] = { fg = tomato }
@@ -69,12 +72,13 @@ return {
       hl["@keyword.return"] = { fg = darkOrange }
       hl["@number"] = { fg = slate }
       hl["@parameter"] = { fg = normalFg }
-      hl["@property"] = { fg = purple }
+      hl["@property"] = { fg = wisteria }
       hl["@punctuation.bracket"] = { fg = pollen }
       hl["@string"] = { fg = algae }
       hl["@type"] = { fg = slate }
       hl["@type.definition"] = { fg = slate }
       hl["@variable"] = { fg = chalk }
+      hl["@constructor"] = { fg = amythist }
 
       --Typescript
       hl["@keyword.coroutine.typescript"] = { fg = darkOrange }
@@ -82,7 +86,7 @@ return {
       hl["@lsp.typemod.variable.defaultLibrary.typescript"] = { fg = orange }
       hl["@tag.delimiter.tsx"] = { fg = orange }
       hl["@tag.tsx"] = { fg = slate }
-      hl["@variable.member.tsx"] = { fg = purple }
+      hl["@variable.member.tsx"] = { fg = wisteria }
     end,
   },
 }
