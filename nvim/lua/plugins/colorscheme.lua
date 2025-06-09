@@ -54,6 +54,9 @@ return {
       hl["TelescopeSelection"] = { bg = "#7f4c00", fg = normalFg }
       hl["TelescopeSelectionCaret"] = { bg = normalBg, fg = orange }
       hl["WhichKeyNormal"] = { bg = normalBg, fg = normalFg }
+      hl["DiffAdded"] = { bg = algae, fg = algae }
+      hl["DiffRemoved"] = { bg = tomato, fg = tomato }
+      hl["DiffChanged"] = { bg = slate, fg = slate }
 
       if vim.fn.has("nvim-0.10") == 1 then
         hl["LineNrAbove"] = { fg = gray }

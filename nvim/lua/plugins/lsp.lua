@@ -18,6 +18,12 @@ return {
           },
         },
       }
+      opts.servers.tsserver = {}
+      opts.servers.eslint = {
+        settings = {
+          format = false,
+        },
+      }
       return opts
     end,
   },
