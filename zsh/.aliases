@@ -1,7 +1,6 @@
 alias ...='../..'
 alias brr='~/Source/second-brain/bin/cli.js'
 alias c='code-insiders'
-alias cat="echo \"use bat\""
 alias code='code-insiders'
 alias d='dirs -v | head -10'
 alias e='$EDITOR'
