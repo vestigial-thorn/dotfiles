@@ -5,6 +5,15 @@ return {
       if not opts.servers then
         opts.servers = {}
       end
+      opts.servers.hls = {
+        filetypes = { "haskell", "lhaskell" },
+        settings = {
+          haskell = {
+            formattingProvider = "ormolu",
+            plugin = {},
+          },
+        },
+      }
       opts.servers.gopls = {
         settings = {
           gopls = {

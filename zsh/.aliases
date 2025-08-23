@@ -1,4 +1,5 @@
 alias ...='../..'
+alias a='alf'
 alias brr='~/Source/second-brain/bin/cli.js'
 alias c='code-insiders'
 alias code='code-insiders'

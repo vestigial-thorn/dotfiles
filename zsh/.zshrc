@@ -44,6 +44,9 @@ fi
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# env
+[[ -f ~/.zshenv ]] && source ~/.zshenv
+
 # functions
 [[ -d ~/.zsh/functions ]] && for function in ~/.zsh/functions/*(.N); do
   source "$function"
@@ -85,14 +88,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
-[ -f "/Users/brandonseda/.ghcup/env" ] && . "/Users/brandonseda/.ghcup/env" # ghcup-env
-
-# perl setup
-PATH="/Users/brandonseda/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/brandonseda/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/brandonseda/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/brandonseda/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/brandonseda/perl5"; export PERL_MM_OPT;
-
-# Added by Windsurf
-export PATH="/Users/thorn/.codeium/windsurf/bin:$PATH"
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
