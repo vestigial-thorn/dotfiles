@@ -34,8 +34,6 @@ mapLeader("sx", cmd("nohlsearch"), "Remove search highlighting")
 -- # normal mode
 -- ai
 addGroup("a", "ai")
-mapLeader("aa", cmd("CopilotChatToggle"), "Toggle")
-mapLeader("ap", cmd("CopiotChatPrompts"), "Prompts")
 
 -- buffers
 unmapLeader("bd")
