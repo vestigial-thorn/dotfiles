@@ -44,9 +44,6 @@ fi
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-# env
-[[ -f ~/.zshenv ]] && source ~/.zshenv
-
 # functions
 [[ -d ~/.zsh/functions ]] && for function in ~/.zsh/functions/*(.N); do
   source "$function"
