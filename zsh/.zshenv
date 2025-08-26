@@ -32,5 +32,3 @@ export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
 
 # keys
 [[ -f ~/.keys ]] && source ~/.keys
-
-echo "zshenv loaded"
